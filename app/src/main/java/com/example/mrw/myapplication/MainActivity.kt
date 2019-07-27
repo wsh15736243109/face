@@ -15,8 +15,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Example of a call to a native method
-        sample_text.text = getStrLength("how").toString()
+        sample_text.text = getStringLengthNonStatic("").toString()
 
+        exportArray(arrayOf("1", "3", "2","1", "3", "2"))
 //        executors()
     }
 
@@ -31,9 +32,13 @@ class MainActivity : AppCompatActivity() {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    external fun stringFromJNI(): Boolean
+    external fun stringFromJNI(str: String, num: Int): Boolean
 
     external fun getStrLength(str: String): Int
+
+    external fun getStringLengthNonStatic(str: String): Int
+
+    external fun exportArray(a: Array<String>)
 
     companion object {
 
